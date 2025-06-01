@@ -9,15 +9,16 @@
 import SwiftUI
 
 struct GameOverView: View {
+    
     let playerName:  String
     let playerScore: Int
     let pcScore:     Int
-
-    @Environment(\.dismiss) private var dismiss
-
+    
+    var onBackToMenu: () -> Void
+    
     // Compute winner and winning score
     private var winnerName: String {
-        playerScore >= pcScore ? playerName : "PC"
+        playerScore > pcScore ? playerName : "PC"
     }
     private var winnerScore: Int {
         max(playerScore, pcScore)
@@ -31,17 +32,19 @@ struct GameOverView: View {
             Text("Winner: \(winnerName)")
                 .font(.largeTitle)
                 .bold()
+                .foregroundColor(.primary)
 
             // Winning score
             Text("score: \(winnerScore)")
                 .font(.title)
                 .padding(.top, 8)
+                .foregroundColor(.primary)
 
             Spacer()
 
             // Back to menu button
             Button(action: {
-                dismiss()
+                onBackToMenu()
             }) {
                 Text("BACK TO MENU")
                     .font(.headline)
@@ -57,34 +60,3 @@ struct GameOverView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-
-//import SwiftUI
-//
-//struct GameOverView: View {
-//    let playerScore: Int
-//    let pcScore:     Int
-//
-//    private var resultText: String {
-//        if playerScore > pcScore {
-//            return "🎉 You Win!"
-//        } else if pcScore > playerScore {
-//            return "💻 PC Wins!"
-//        } else {
-//            return "🏠 House Wins!"
-//        }
-//    }
-//
-//    var body: some View {
-//        VStack(spacing: 24) {
-//            Text("Game Over").font(.largeTitle).bold()
-//            Text("Your Score: \(playerScore)")
-//            Text("PC Score: \(pcScore)")
-//            Text(resultText)
-//                .font(.title2)
-//                .padding(.top, 16)
-//            Spacer()
-//        }
-//        .padding()
-//        .navigationBarBackButtonHidden(true)
-//    }
-//}

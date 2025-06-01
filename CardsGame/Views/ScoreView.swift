@@ -15,6 +15,6 @@ struct ScoreView: View {
             Text(name).font(.headline)
             Text("\(score)").font(.system(size: 40, weight: .bold))
         }
-        .foregroundColor(.black)
+        .foregroundColor(.primary)
     }
 }

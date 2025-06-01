@@ -16,6 +16,6 @@ struct TimerView: View {
                 .font(.title)
                 .monospacedDigit()
         }
-        .foregroundColor(.black)
+        .foregroundColor(.primary)
     }
 }

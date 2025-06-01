@@ -30,7 +30,7 @@ struct CardView: View {
         .frame(width: 120, height: 180)
         // apply the 3D flip
         .rotation3DEffect(
-            .degrees(flipAngle),
+            .degrees(flipAngle.truncatingRemainder(dividingBy: 360)),
             axis: (x: 0, y: 1, z: 0)
         )
         .background(
