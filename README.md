@@ -28,8 +28,8 @@ This is a two-player card game (Player vs PC) where:
 
 | Welcome Screen             | Game Screen                | Game Over Screen          |
 |---------------------------|----------------------------|---------------------------|
-| ![Welcome](screenshots/welcome-light.png) | ![Game](screenshots/game-light.png) ![Game](screenshots/game2-light.png) | ![Game Over](screenshots/gameover-light.png) |
-| ![Welcome Dark](screenshots/welcome-dark.png) | ![Game Dark](screenshots/game-dark.png) ![Game Dark](screenshots/game2-dark.png) | ![Game Over Dark](screenshots/gameover-dark.png) |
+| ![Welcome](CardsGame/screenshots/welcome-light.png) | ![Game](CardsGame/screenshots/game-light.png) ![Game](CardsGame/screenshots/game2-light.png) | ![Game Over](CardsGame/screenshots/gameover-light.png) |
+| ![Welcome Dark](CardsGame/screenshots/welcome-dark.png) | ![Game Dark](CardsGame/screenshots/game-dark.png) ![Game Dark](CardsGame/screenshots/game2-dark.png) | ![Game Over Dark](CardsGame/screenshots/gameover-dark.png) |
 
 ## 🛠 Installation
 
