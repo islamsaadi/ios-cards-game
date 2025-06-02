@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		802598EA2DEDD73000C27605 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 802598E92DEDD71600C27605 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		8029BEEA2DDA3B9F000F645C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		802598E92DEDD71600C27605 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8029BEDC2DDA3B9E000F645C /* CardsGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardsGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8029BEE92DDA3B9F000F645C /* CardsGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardsGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8029BEF32DDA3B9F000F645C /* CardsGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardsGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +80,7 @@
 		8029BED32DDA3B9E000F645C = {
 			isa = PBXGroup;
 			children = (
+				802598E92DEDD71600C27605 /* README.md */,
 				8029BEDE2DDA3B9E000F645C /* CardsGame */,
 				8029BEEC2DDA3B9F000F645C /* CardsGameTests */,
 				8029BEF62DDA3B9F000F645C /* CardsGameUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802598EA2DEDD73000C27605 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
