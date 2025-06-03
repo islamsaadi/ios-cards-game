@@ -17,7 +17,7 @@ struct WelcomeView: View {
     private let locationManager  = CLLocationManager()
     private let dividerLongitude = 34.817549168324334
 
-    /// “East Side” or “West Side” once we have a location
+    /// "East Side" or "West Side" once we have a location
     private var currentSide: String? {
         guard let loc = userLocation else { return nil }
         return loc.coordinate.longitude > dividerLongitude
@@ -26,7 +26,7 @@ struct WelcomeView: View {
     }
 
     private var isPlayerOnLeft: Bool {
-        // We’ll put the player on the left when they’re on the West side
+        // We'll put the player on the left when they're on the West side
         currentSide == "West Side"
     }
 
@@ -47,14 +47,20 @@ struct WelcomeView: View {
                     TextField("Enter name", text: $inputName, onCommit: savePlayer)
                         .textFieldStyle(.roundedBorder)
                         .padding(.horizontal)
+                        .foregroundStyle(.primary)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(colorScheme == .dark ? Color.gray.opacity(0.3) : Color.white)
+                        )
                 }
 
                 if !playerName.isEmpty {
                     Text("Hi \(playerName)")
                         .font(.title)
+                        .foregroundColor(.primary)
                 }
 
-                // MARK: Side Picker Inline HStack
+                
                 HStack {
                     let isWest = (currentSide == "West Side")
                     VStack {
@@ -68,6 +74,7 @@ struct WelcomeView: View {
 
                         Text("West Side")
                             .fontWeight(isWest ? .bold : .regular)
+                            .foregroundColor(.primary)
                     }
 
                     Spacer()
@@ -84,6 +91,7 @@ struct WelcomeView: View {
 
                         Text("East Side")
                             .fontWeight(isEast ? .bold : .regular)
+                            .foregroundColor(.primary)
                     }
                 }
                 .padding(.horizontal, 40)
@@ -91,6 +99,7 @@ struct WelcomeView: View {
                 if let side = currentSide, !playerName.isEmpty {
                     Text("Your Side: \(side)")
                         .font(.headline)
+                        .foregroundColor(.primary)
                 }
 
                 if let _ = userLocation, !playerName.isEmpty {
@@ -109,14 +118,19 @@ struct WelcomeView: View {
             }
             .padding()
             .onAppear {
-                if let saved = PlayerProfileManager.shared.getPlayerName() {
-                    playerName = saved
-                }
+                loadSavedPlayerName()
                 requestLocation()
             }
             .alert("Location Access Denied", isPresented: $locationDenied) {
                 Button("OK", role: .cancel) { }
             }
+        }
+    }
+
+    private func loadSavedPlayerName() {
+        if let savedName = PlayerProfileManager.shared.getPlayerName(), !savedName.isEmpty {
+            playerName = savedName
+            inputName = savedName
         }
     }
 
@@ -131,7 +145,11 @@ struct WelcomeView: View {
 
     private func requestLocation() {
         locationDelegateWrapper.configure(
-            onUpdate: { loc in self.userLocation = loc },
+            onUpdate: { loc in
+                self.userLocation = loc
+                // Stop location updates after getting the first location
+                self.locationManager.stopUpdatingLocation()
+            },
             onDenied: { self.locationDenied = true }
         )
         locationManager.delegate = locationDelegateWrapper

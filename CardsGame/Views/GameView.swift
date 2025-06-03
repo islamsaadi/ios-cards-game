@@ -119,6 +119,7 @@ struct GameView: View {
         // Flip to front (reveal cards)
         withAnimation(.interpolatingSpring(stiffness: 200, damping: 18)) {
             flipAngle = 0
+            SoundManager.shared.playFlipSound()
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
@@ -136,6 +137,7 @@ struct GameView: View {
                 // Flip to back
                 withAnimation(.easeInOut(duration: 0.4)) {
                     flipAngle = 180
+                    SoundManager.shared.playFlipSound()
                 }
 
                 isBack = true
@@ -144,6 +146,11 @@ struct GameView: View {
                     // End game or prepare next round
                     if roundCount >= maxRounds {
                         gameEnded = true
+                        if(playerScore > pcScore) {
+                            SoundManager.shared.playWinSound()
+                        }else{
+                            SoundManager.shared.playLoseSound()
+                        }
                         onGameOver(playerScore, pcScore)
                     } else {
                         // Draw new cards
