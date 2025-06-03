@@ -44,6 +44,7 @@ struct GameOverView: View {
 
             // Back to menu button
             Button(action: {
+                SoundManager.shared.stopEffectPlayer();
                 onBackToMenu()
             }) {
                 Text("BACK TO MENU")

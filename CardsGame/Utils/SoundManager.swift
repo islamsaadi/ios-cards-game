@@ -48,6 +48,11 @@ class SoundManager {
     func playLoseSound() {
         play(&effectPlayer, fileName: "game-over", loops: 0, volume: 1.0)
     }
+    
+    func stopEffectPlayer() {
+        effectPlayer?.stop()
+        effectPlayer = nil
+    }
 
     private func play(_ player: inout AVAudioPlayer?, fileName: String, loops: Int, volume: Float = 1.0) {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "mp3") ??
