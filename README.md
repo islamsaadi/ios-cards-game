@@ -64,6 +64,17 @@ This is a two-player card game (Player vs PC) where:
 5. After 10 turns, a summary screen announces the winner.
 6. Tap "Back to Menu" to return.
 
+
+## 🎵 Sounds
+Sound effects for:
+- Card flip
+- Victory
+- Lose
+- Background music
+
+The background music is paused when the app is inactive and resumed on return.
+
+
 ## 🧪 Lifecycle & UX
 
 - Location is fetched once per app open.
